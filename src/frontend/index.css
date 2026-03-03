@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Fonts ──────────────────────────────────────────────────── */
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/assets/fonts/PlayfairDisplay-Italic-VariableFont_wght.woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/assets/fonts/PlayfairDisplay-VariableFont_wght.woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("/assets/fonts/CabinetGrotesk-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("/assets/fonts/Fraunces-Italic-VariableFont_SOFT_WONK_opsz_wght.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("/assets/fonts/Fraunces-VariableFont_SOFT_WONK_opsz_wght.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* Warm yearbook palette — cream + amber + deep mahogany */
+    --background: 0.97 0.018 80;
+    --foreground: 0.22 0.04 55;
+
+    --card: 0.99 0.01 85;
+    --card-foreground: 0.22 0.04 55;
+
+    --popover: 0.99 0.01 85;
+    --popover-foreground: 0.22 0.04 55;
+
+    /* Primary: rich amber-gold */
+    --primary: 0.62 0.16 60;
+    --primary-foreground: 0.99 0 0;
+
+    /* Secondary: warm tan/wheat */
+    --secondary: 0.92 0.04 75;
+    --secondary-foreground: 0.3 0.06 55;
+
+    --muted: 0.93 0.025 75;
+    --muted-foreground: 0.52 0.04 60;
+
+    /* Accent: deep burgundy/crimson */
+    --accent: 0.46 0.14 25;
+    --accent-foreground: 0.99 0 0;
+
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    --border: 0.88 0.04 75;
+    --input: 0.88 0.04 75;
+    --ring: 0.62 0.16 60;
+
+    --chart-1: 0.646 0.222 41.116;
+    --chart-2: 0.6 0.118 184.704;
+    --chart-3: 0.398 0.07 227.392;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+
+    --sidebar: 0.95 0.02 75;
+    --sidebar-foreground: 0.22 0.04 55;
+    --sidebar-primary: 0.62 0.16 60;
+    --sidebar-primary-foreground: 0.99 0 0;
+    --sidebar-accent: 0.92 0.04 75;
+    --sidebar-accent-foreground: 0.3 0.06 55;
+    --sidebar-border: 0.88 0.04 75;
+    --sidebar-ring: 0.62 0.16 60;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    background-image:
+      radial-gradient(ellipse at 20% 50%, oklch(0.95 0.03 75 / 0.4) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, oklch(0.93 0.05 55 / 0.3) 0%, transparent 50%);
+  }
+}
+
+/* ── Gallery Masonry Grid ── */
+.photo-grid {
+  columns: 2;
+  column-gap: 1rem;
+}
+@media (min-width: 640px) {
+  .photo-grid {
+    columns: 3;
+  }
+}
+@media (min-width: 1024px) {
+  .photo-grid {
+    columns: 4;
+  }
+}
+
+.photo-grid-item {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+}
+
+/* ── Polaroid card style ── */
+.polaroid {
+  background: white;
+  padding: 0.5rem 0.5rem 2rem;
+  box-shadow:
+    0 2px 4px rgba(120, 80, 20, 0.12),
+    0 6px 20px rgba(120, 80, 20, 0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.polaroid:hover {
+  transform: rotate(0deg) scale(1.03);
+  box-shadow:
+    0 4px 10px rgba(120, 80, 20, 0.2),
+    0 14px 40px rgba(120, 80, 20, 0.18);
+}
+.polaroid:nth-child(4n + 1) { transform: rotate(-1.2deg); }
+.polaroid:nth-child(4n + 2) { transform: rotate(0.8deg); }
+.polaroid:nth-child(4n + 3) { transform: rotate(-0.5deg); }
+.polaroid:nth-child(4n + 4) { transform: rotate(1.5deg); }
+.polaroid:nth-child(4n + 1):hover,
+.polaroid:nth-child(4n + 2):hover,
+.polaroid:nth-child(4n + 3):hover,
+.polaroid:nth-child(4n + 4):hover {
+  transform: rotate(0deg) scale(1.03);
+}
+
+/* ── Decorative header script ── */
+.school-title-script {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+}
+
+/* ── Upload dropzone ── */
+.dropzone-active {
+  @apply border-primary bg-primary/10;
+}
